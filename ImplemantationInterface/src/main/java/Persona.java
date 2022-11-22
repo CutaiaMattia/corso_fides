@@ -1,3 +1,5 @@
+
+
 public class Persona implements Comparable<Persona> {
     private String nome;
     private String cognome;
@@ -39,4 +41,5 @@ public class Persona implements Comparable<Persona> {
         } else
             return 0;
     }
+
 }
