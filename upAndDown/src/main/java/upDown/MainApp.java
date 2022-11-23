@@ -25,4 +25,3 @@ public class MainApp {
 
     }
 }
-    git commit -m "23/11 add upAndDownCasting and generics"
