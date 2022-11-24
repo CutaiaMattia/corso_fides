@@ -15,6 +15,7 @@ public class Main {
             switch (input.trim()) {
                 case "show": {
                     g.showGarage();
+                    System.out.println();
                     break;
                 }
                 case "insert": {
@@ -26,6 +27,7 @@ public class Main {
                     System.out.println("producer ");
                     String producer = in.nextLine();
                     g.insertCar(plate, type, producer);
+                    System.out.println();
                     break;
                 }
 
@@ -33,6 +35,7 @@ public class Main {
                     System.out.println("insert plate to delete");
                     String plate = in.nextLine();
                     g.delete(plate);
+                    System.out.println();
                     break;
                 }
 
@@ -45,6 +48,7 @@ public class Main {
                     System.out.println("plate to update ");
                     String plate = in.nextLine();
                     g.upDateCar(column, value, plate);
+                    System.out.println();
                     break;
                 }
                 case "stop": {

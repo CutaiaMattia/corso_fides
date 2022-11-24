@@ -1,8 +1,6 @@
 package db;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Garage {
 
@@ -23,15 +21,20 @@ public class Garage {
 
     public void insertCar(String plate, String type, String producer) {
         Statement st = null;
+        Regex regex = new Regex();
+        if (regex.isCheck(plate)) {
 
-        int ri = 0;
-        String query = String.format("INSERT INTO veicolo VALUES('%s','%s','%s')", plate, type, producer);
-        try {
-            st = conn.createStatement();
-            ri = st.executeUpdate(query);
-            System.out.printf("righe inserite = %s", ri);
-        } catch (SQLException e) {
-            e.printStackTrace();
+            int ri = 0;
+            String query = String.format("INSERT INTO veicolo VALUES('%s','%s','%s')", plate, type, producer);
+            try {
+                st = conn.createStatement();
+                ri = st.executeUpdate(query);
+                System.out.printf("righe inserite = %s", ri);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("plate not valid");
         }
     }
 
@@ -60,31 +63,43 @@ public class Garage {
     }
 
     public void delete(String value) {
-        int rd= 0;
-        String query = String.format("DELETE FROM veicolo WHERE plate='%s'",value);
-        Statement st = null;
+        Regex regex = new Regex();
+        if (regex.isCheck(value)) {
+            int rd = 0;
+            String query = String.format("DELETE FROM veicolo WHERE plate='%s'", value);
+            Statement st = null;
 
-        try {
-            st = conn.createStatement();
-            rd = st.executeUpdate(query);
+            try {
+                st = conn.createStatement();
+                rd = st.executeUpdate(query);
 
-            System.out.printf("righe cancellate = %s", rd);
+                System.out.printf("righe cancellate = %s", rd);
 
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
+
     public void upDateCar(String updateColumn, String value, String plate) {
-        Statement st = null;
-        int rm = 0;
-        String query = String.format("UPDATE veicolo SET %s='%s' WHERE plate='%s'",updateColumn,value,plate );
-        try {
-            st = conn.createStatement();
-            rm = st.executeUpdate(query);
-            System.out.printf("righe modificate = %s", rm);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+        Regex regex = new Regex();
+        System.out.println(regex.isCheck(value));
+                if (regex.isCheck(value)) {
+                    Statement st = null;
+                    int rm = 0;
+                    String query = String.format("UPDATE veicolo SET %s='%s' WHERE plate='%s'", updateColumn, value, plate);
+                    try {
+                        st = conn.createStatement();
+                        rm = st.executeUpdate(query);
+                        System.out.printf("righe modificate = %s", rm);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    System.out.println("plate not valid");
+                }
+            }
+
+
 }
