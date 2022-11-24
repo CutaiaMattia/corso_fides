@@ -3,22 +3,33 @@ package db;
 
 import java.util.Scanner;
 
-public class Main {
+public class MainPreparedStatment {
 
 
     /*
     importare i jconnector = file -> project structure ->libraries ---> aggiungi-> (ricercare il mysql-connector.jar)
      */
+
     public static void main(String[] args) {
         boolean isClose = false;
         while (!isClose) {
             System.out.println("what do you want to do ? [Show / insert / delete / update / stop]");
             Scanner in = new Scanner(System.in);
             String input = in.nextLine().toLowerCase();
-            Garage g = new Garage();
+            GaragePreparedStantment g = new GaragePreparedStantment();
             switch (input.trim()) {
                 case "show": {
-                    g.showGarage();
+                    System.out.println("column ");
+                    String column = in.nextLine();
+                    if(!column.equalsIgnoreCase("*")){
+                        System.out.println("plate ");
+                        String plate = in.nextLine();
+
+                        g.showGarage(column,plate);
+                    } else {
+                        g.showGarage(column,"");
+                    }
+
                     System.out.println();
                     break;
                 }

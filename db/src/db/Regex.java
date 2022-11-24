@@ -10,6 +10,7 @@ public class Regex {
         String regex = "([A-Z]{2})([0-9]{4})([A-Z]{2})";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(toValidate);
+
         return matcher.find();
     }
 }

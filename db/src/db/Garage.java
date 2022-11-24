@@ -85,7 +85,7 @@ public class Garage {
     public void upDateCar(String updateColumn, String value, String plate) {
         Regex regex = new Regex();
         System.out.println(regex.isCheck(value));
-                if (regex.isCheck(value)) {
+                if (regex.isCheck(plate)) {
                     Statement st = null;
                     int rm = 0;
                     String query = String.format("UPDATE veicolo SET %s='%s' WHERE plate='%s'", updateColumn, value, plate);
